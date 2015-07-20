@@ -17,6 +17,16 @@ posts = Post.all
     )
 end
 
+#Create Advertisements
+5.times do
+  Advertisement.create!(
+    title: Faker::Company.name,
+    copy: Faker::Lorem.sentence,
+    price: Faker::Number.number(2)
+  )
+end
+
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
