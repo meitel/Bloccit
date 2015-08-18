@@ -50,13 +50,22 @@ password: 'helloworld'
 member.skip_confirmation!
 member.save!
 
+ # Create Topics
+15.times do
+ Topic.create!(
+   name:         Faker::Lorem.sentence,
+   description:  Faker::Lorem.paragraph
+ )
+end
+topics = Topic.all
 
 #create Posts
 50.times do
   Post.create!(
     user: users.sample,
     title:  Faker::Lorem.sentence,
-    body:   Faker::Lorem.paragraph
+    body:   Faker::Lorem.paragraph,
+    topic: topics.sample
     )
 end
 posts = Post.all
@@ -92,4 +101,5 @@ end
 
 puts "Seed finished"
 puts "#{Post.count} posts created"
+puts "#{Topic.count} topics created"
 puts "#{Comment.count} comments created"
